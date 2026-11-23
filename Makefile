@@ -20,7 +20,7 @@ $(SYNTHS):
 install:
 	@test -d out || { echo "nothing built yet, run make first" >&2; exit 1; }
 	mkdir -p $(VST3_DIR)
-	find out -type d -name '*.vst3' -prune -exec cp -r {} $(VST3_DIR)/ \;
+	for d in out/*/; do cp -r $$d. $(VST3_DIR)/; done
 
 clean:
 	rm -rf out
